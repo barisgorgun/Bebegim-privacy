@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bebeğim: İlk Lokma - Privacy Policy / Gizlilik Politikası</title>
+    <title>Bebeğim: İlk Lokma - Privacy Policy / Datenschutz / Gizlilik Politikası</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -26,6 +26,7 @@
             display: flex;
             gap: 12px;
             margin-bottom: 40px;
+            flex-wrap: wrap;
         }
         .lang-nav a {
             padding: 8px 20px;
@@ -36,6 +37,7 @@
             font-weight: 600;
             font-size: 14px;
             transition: all 0.2s;
+            cursor: pointer;
         }
         .lang-nav a:hover,
         .lang-nav a.active {
@@ -51,6 +53,10 @@
             padding: 40px 44px;
             margin-bottom: 48px;
             box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+            display: none;
+        }
+        .language-section.active {
+            display: block;
         }
 
         h1 {
@@ -174,6 +180,10 @@
 
         a {
             color: #27ae60;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
 
         .badge {
@@ -206,40 +216,54 @@
             margin-top: 40px;
         }
     </style>
+    <script>
+        function showLanguage(lang) {
+            document.querySelectorAll('.language-section').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.lang-nav a').forEach(el => el.classList.remove('active'));
+            document.getElementById(lang).classList.add('active');
+            event.target.classList.add('active');
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        window.addEventListener('load', function() {
+            const saved = localStorage.getItem('selectedLanguage') || 'tr';
+            showLanguage(saved);
+        });
+    </script>
 </head>
 <body>
 <div class="page-wrapper">
 
-    <!-- Dil Değiştirme Menüsü -->
-    <!-- Not: Sayfa içi link yapısı kullanılmış olup JS ekleyerek daha pürüzsüz yapılabilir -->
+    <!-- Language Navigation -->
     <div class="lang-nav">
-        <a href="#tr" class="active" onclick="document.querySelectorAll('.lang-nav a').forEach(el=>el.classList.remove('active')); this.classList.add('active'); document.getElementById('en').style.display='none'; document.getElementById('tr').style.display='block'; return false;">🇹🇷 Türkçe</a>
-        <a href="#en" onclick="document.querySelectorAll('.lang-nav a').forEach(el=>el.classList.remove('active')); this.classList.add('active'); document.getElementById('tr').style.display='none'; document.getElementById('en').style.display='block'; return false;">🇺🇸 English</a>
+        <a onclick="showLanguage('tr')" id="btn-tr" class="active">🇹🇷 Türkçe</a>
+        <a onclick="showLanguage('en')" id="btn-en">🇺🇸 English</a>
+        <a onclick="showLanguage('de')" id="btn-de">🇩🇪 Deutsch</a>
     </div>
 
     <!-- ===================== TÜRKÇE ===================== -->
-    <div class="language-section" id="tr">
+    <div class="language-section active" id="tr">
         <h1>Gizlilik ve Kullanım Koşulları</h1>
         <p class="meta">Son Güncelleme: 1 Ağustos 2026 &nbsp;|&nbsp; Uygulama: Bebeğim: İlk Lokma (BiteMix)</p>
 
         <div class="intro">
-            <strong>Bebeğim: İlk Lokma (BiteMix)</strong> uygulamasını tercih ettiğiniz için teşekkür ederiz. 
-            Mutfaktaki en büyük asistanınız olurken, sizin ve bebeğinizin verilerini korumak en yüksek önceliğimizdir. 
+            <strong>Bebeğim: İlk Lokma (BiteMix)</strong> uygulamasını tercih ettiğiniz için teşekkür ederiz.
+            Mutfaktaki en büyük asistanınız olurken, sizin ve bebeğinizin verilerini korumak en yüksek önceliğimizdir.
             Aşağıdaki metin, verilerinizi nasıl (veya nasıl toplamadığımızı) ile uygulamanın yasal kullanım alanlarını şeffafça açıklar.
         </div>
 
-        <!-- 1. Tıbbi Tavsiye Değildir / Disclaimer -->
+        <!-- 1. Tıbbi Tavsiye Değildir -->
         <h2><span class="num">1</span> Tıbbi Tavsiye Değildir (ÖNEMLİ)</h2>
 
         <div class="highlight warning">
-            ⚠️ <strong>UYARI:</strong> Uygulama içinde ("Keşfet" sekmesi vb.) sunulan tarifler, 
-            alerji/malzeme alternatifleri, besin çeşitliliği tabloları ve tüm rehber bilgiler 
-            <strong>sadece bilgilendirme amaçlıdır</strong> ve Dünya Sağlık Örgütü (WHO) kaynaklarından derlenmiştir. 
+            ⚠️ <strong>UYARI:</strong> Uygulama içinde ("Keşfet" sekmesi vb.) sunulan tarifler,
+            alerji/malzeme alternatifleri, besin çeşitliliği tabloları ve tüm rehber bilgiler
+            <strong>sadece bilgilendirme amaçlıdır</strong> ve Dünya Sağlık Örgütü (WHO) kaynaklarından derlenmiştir.
             Bu içerikler asla profesyonel tıbbi teşhis, doktor tavsiyesi veya tedavi yerine geçmez.
         </div>
         <p>
-            Çocuğunuzun beslenmesindeki her türlü yeni değişiklik, katı gıdaya geçiş aşamaları 
-            veya alerji riskleri için <strong>mutlaka pediatristinize (doktorunuza) danışmalısınız</strong>. 
+            Çocuğunuzun beslenmesindeki her türlü yeni değişiklik, katı gıdaya geçiş aşamaları
+            veya alerji riskleri için <strong>mutlaka pediatristinize (doktorunuza) danışmalısınız</strong>.
             Uygulamadaki AI tarif önerilerinin çocuğunuz için uygunluğunu doğrulamak kullanıcının kendi sorumluluğundadır.
         </p>
 
@@ -275,19 +299,24 @@
                     <td>Beslenme çeşitliliği skor tablosu</td>
                     <td>Yalnızca cihazınızda</td>
                 </tr>
+                <tr>
+                    <td><strong>Büyüme, Aşı, Diş, Gelişim Takibi</strong> <span class="badge local">Cihazda</span></td>
+                    <td>Bebeğin sağlık kilometre taşlarını kaydetme</td>
+                    <td>Yalnızca cihazınızda</td>
+                </tr>
             </tbody>
         </table>
 
         <div class="highlight green">
-            ✅ <strong>Kimlik bağlantısı yoktur.</strong> Hiçbir veri, sizin isim, TC Kimlik Numarası, e-posta, telefon 
+            ✅ <strong>Kimlik bağlantısı yoktur.</strong> Hiçbir veri, sizin isim, TC Kimlik Numarası, e-posta, telefon
             veya hassas verilerinizle eşleştirilmez. Uygulamamız giriş yapmanızı (hesap açmanızı) istemez.
         </div>
 
-        <!-- 3. Üçüncü Taraf AI Hizmeti -->
+        <!-- 3. Üçüncü Taraf AI -->
         <h2><span class="num">3</span> Üçüncü Taraf AI Hizmeti — Google Gemini API</h2>
 
         <p>
-            Bebeğim: İlk Lokma, eksik malzeme alternatifleri ve haftalık plan düzenlemelerini size en zeki şekilde sunabilmek için 
+            Bebeğim: İlk Lokma, eksik malzeme alternatifleri ve haftalık plan düzenlemelerini size en zeki şekilde sunabilmek için
             <strong>Google LLC</strong> tarafından sunulan <strong>Gemini API</strong> altyapısını kullanmaktadır.
         </p>
 
@@ -313,7 +342,7 @@
             <li><em>Not: Bu madde bebek profili, kiler ve favori verilerinizi kapsar. Premium abonelik satın alma işlemleriniz bu kapsamın dışındadır ve Apple App Store ile RevenueCat üzerinden işlenir — bkz. Madde 5.</em></li>
         </ul>
 
-        <!-- 5. Premium Üyelik / Abonelik -->
+        <!-- 5. Premium Üyelik -->
         <h2><span class="num">5</span> Premium Üyelik / Abonelik</h2>
 
         <p>
@@ -324,8 +353,8 @@
         </p>
 
         <ul>
-            <li><strong>Plan seçenekleri:</strong> Aylık veya 6 aylık dönemlerde satın alınabilir. Güncel
-                fiyat, bulunduğunuz bölgeye göre satın alma ekranında gösterilir.</li>
+            <li><strong>Plan seçenekleri:</strong> Aylık, 6 aylık ve yıllık dönemlerde satın alınabilir. Güncel fiyatlar
+                bulunduğunuz bölgeye göre satın alma ekranında gösterilir.</li>
             <li><strong>Ücretsiz deneme:</strong> Bazı paketler, satın alma ekranında belirtilen süre kadar
                 ücretsiz deneme içerebilir; deneme süresi içinde iptal edilmezse abonelik otomatik olarak
                 ücretli döneme geçer.</li>
@@ -335,7 +364,7 @@
             <li><strong>İptal ve yönetim:</strong> Cihazınızdaki <em>Ayarlar → [Apple ID] → Abonelikler</em>
                 yolundan veya uygulama içindeki "Aboneliği Yönet" ekranından dilediğiniz zaman iptal
                 edebilirsiniz. İptal, mevcut ödenmiş dönemin sonuna kadar erişiminizi etkilemez; yalnızca
-                bir sonraki dönem için yenileme yapılmaz.</li>
+                bir sonraki dönem için yenileme yapılamaz.</li>
             <li><strong>Ödeme ve geri ödeme:</strong> Tüm ödemeler Apple App Store üzerinden işlenir; geri
                 ödeme talepleri Apple'ın standart politikalarına tabidir, tarafımızca doğrudan iade
                 yapılamaz.</li>
@@ -352,40 +381,38 @@
         <h2><span class="num">6</span> İletişim</h2>
         <div class="contact-box">
             <strong>Bebeğim: İlk Lokma (BiteMix) — Destek & İletişim</strong><br>
-            Geliştirici: [Barış / Görgün]<br>
+            Geliştirici: Barış Görün<br>
             E-posta: <a href="mailto:barisgorgunn@gmail.com">barisgorgunn@gmail.com</a><br>
             Uygulama ile ilgili teknik veya gizlilik ihlallerinde lütfen e-posta üzerinden bizimle iletişime geçin.
         </div>
     </div>
 
-    <hr style="display:none;" id="lang-divider">
-
     <!-- ===================== ENGLISH ===================== -->
-    <div class="language-section" id="en" style="display:none;">
+    <div class="language-section" id="en">
         <h1>Privacy Policy & Terms of Service</h1>
         <p class="meta">Last Updated: August 1, 2026 &nbsp;|&nbsp; App: Bebeğim: İlk Lokma (BiteMix)</p>
 
         <div class="intro">
-            Thank you for choosing the <strong>Bebeğim: İlk Lokma (BiteMix)</strong> app. 
-            While we strive to be your greatest kitchen assistant, protecting your data and keeping your baby safe is our highest priority. 
+            Thank you for choosing the <strong>Bebeğim: İlk Lokma (BiteMix)</strong> app.
+            While we strive to be your greatest kitchen assistant, protecting your data and keeping your baby safe is our highest priority.
             The following outlines our data collection (and non-collection) policies, along with important legal disclaimers.
         </div>
 
-        <!-- 1. Tıbbi Tavsiye Değildir / Disclaimer -->
+        <!-- 1. Medical Disclaimer -->
         <h2><span class="num">1</span> Medical Disclaimer (IMPORTANT)</h2>
 
         <div class="highlight warning">
-            ⚠️ <strong>WARNING:</strong> All recipes, allergy substitutions, nutritional diversity charts, and guides presented in the app 
-            (such as the "Discover" tab) are <strong>for informational purposes only</strong> and compiled from World Health Organization (WHO) guidelines. 
+            ⚠️ <strong>WARNING:</strong> All recipes, allergy substitutions, nutritional diversity charts, and guides presented in the app
+            (such as the "Discover" tab) are <strong>for informational purposes only</strong> and compiled from World Health Organization (WHO) guidelines.
             These contents do not, under any circumstances, replace professional medical diagnoses, pediatric advice, or treatment.
         </div>
         <p>
-            For any changes in your baby's diet, transitioning to solid foods, 
-            or managing allergy risks, <strong>you must consult your pediatrician</strong>. 
+            For any changes in your baby's diet, transitioning to solid foods,
+            or managing allergy risks, <strong>you must consult your pediatrician</strong>.
             It is the sole responsibility of the user to verify if the AI-generated recipe suggestions are suitable and safe for their baby.
         </p>
 
-        <!-- 2. Toplanan Veriler -->
+        <!-- 2. Data We Collect -->
         <h2><span class="num">2</span> Data We Collect & Privacy</h2>
 
         <table>
@@ -417,19 +444,24 @@
                     <td>Tracking dietary diversity scores</td>
                     <td>On-device only</td>
                 </tr>
+                <tr>
+                    <td><strong>Growth, Vaccinations, Teeth, Milestones</strong> <span class="badge local">On-device</span></td>
+                    <td>Recording baby health milestones</td>
+                    <td>On-device only</td>
+                </tr>
             </tbody>
         </table>
 
         <div class="highlight green">
-            ✅ <strong>No identity linkage.</strong> No data is ever matched with your real name, ID number, email, phone number, 
+            ✅ <strong>No identity linkage.</strong> No data is ever matched with your real name, ID number, email, phone number,
             or sensitive personal data. Our app does not require you to create an account or log in.
         </div>
 
-        <!-- 3. Üçüncü Taraf AI Hizmeti -->
+        <!-- 3. Third-Party AI -->
         <h2><span class="num">3</span> Third-Party AI Service — Google Gemini API</h2>
 
         <p>
-            Bebeğim: İlk Lokma utilizes the <strong>Gemini API</strong>, powered by <strong>Google LLC</strong>, 
+            Bebeğim: İlk Lokma utilizes the <strong>Gemini API</strong>, powered by <strong>Google LLC</strong>,
             to provide intelligent ingredient substitutions and robust weekly meal planning.
         </p>
 
@@ -445,19 +477,19 @@
             <li>GPS location or payment information.</li>
         </ul>
 
-        <!-- 4. Veri Depolama -->
+        <!-- 4. Data Storage -->
         <h2><span class="num">4</span> Data Storage & Security</h2>
 
         <ul>
-            <li>Your baby’s age, dietary preferences, and added ingredients are stored <strong>strictly on your device</strong>.</li>
-            <li>We do <strong>not</strong> use or maintain our own backend server databases. Your phone is the sole host of the app’s data.</li>
+            <li>Your baby's age, dietary preferences, and added ingredients are stored <strong>strictly on your device</strong>.</li>
+            <li>We do <strong>not</strong> use or maintain our own backend server databases. Your phone is the sole host of the app's data.</li>
             <li>You can permanently delete all stored app data at any time simply by deleting the app from your device.</li>
             <li><em>Note: This section covers baby profile, fridge, and favorites data. Premium subscription
                 purchases are outside this scope and are processed via the Apple App Store and RevenueCat —
                 see Section 5.</em></li>
         </ul>
 
-        <!-- 5. Premium Membership / Subscription -->
+        <!-- 5. Premium Membership -->
         <h2><span class="num">5</span> Premium Membership / Subscription</h2>
 
         <p>
@@ -468,8 +500,8 @@
         </p>
 
         <ul>
-            <li><strong>Plan options:</strong> Available as monthly or 6-month billing periods. The current
-                price for your region is shown on the purchase screen.</li>
+            <li><strong>Plan options:</strong> Available as monthly, 6-month, and annual billing periods. Current prices
+                for your region are shown on the purchase screen.</li>
             <li><strong>Free trial:</strong> Some packages may include a free trial for the length shown on
                 the purchase screen; unless canceled during the trial, the subscription automatically
                 converts to a paid period.</li>
@@ -492,17 +524,155 @@
             details never reach us and are handled directly by Apple.
         </div>
 
-        <!-- 6. İletişim -->
+        <!-- 6. Contact -->
         <h2><span class="num">6</span> Contact</h2>
         <div class="contact-box">
             <strong>Bebeğim: İlk Lokma (BiteMix) — Support & Privacy</strong><br>
-            Developer: [Barış / Görgün]<br>
+            Developer: Barış Görün<br>
             Email: <a href="mailto:barisgorgunn@gmail.com">barisgorgunn@gmail.com</a><br>
             Please contact us via email for any technical support or privacy-related inquiries.
+        </div>
+    </div>
+
+    <!-- ===================== DEUTSCH ===================== -->
+    <div class="language-section" id="de">
+        <h1>Datenschutzerklärung & Nutzungsbedingungen</h1>
+        <p class="meta">Zuletzt aktualisiert: 1. August 2026 &nbsp;|&nbsp; App: Bebeğim: İlk Lokma (BiteMix)</p>
+
+        <div class="intro">
+            Vielen Dank, dass Sie die <strong>Bebeğim: İlk Lokma (BiteMix)</strong> App nutzen.
+            Während wir Ihr größter Küchenassistent sind, ist der Schutz Ihrer und der Daten Ihres Babys unsere höchste Priorität.
+            Im Folgenden werden unsere Richtlinien zur Datenerfassung (und Nichterfassung) sowie wichtige rechtliche Haftungsausschlüsse dargelegt.
+        </div>
+
+        <!-- 1. Medizinischer Haftungsausschluss -->
+        <h2><span class="num">1</span> Medizinischer Haftungsausschluss (WICHTIG)</h2>
+
+        <div class="highlight warning">
+            ⚠️ <strong>WARNUNG:</strong> Alle Rezepte, Allergen-Alternativen, Nährstoffdiversitäts-Diagramme und Leitfäden in der App
+            (z.B. im Reiter "Entdecke") sind <strong>nur zu Informationszwecken bestimmt</strong> und stammen aus WHO-Richtlinien.
+            Diese Inhalte ersetzen in keiner Weise professionelle medizinische Diagnosen, kinderärztliche Beratung oder Behandlung.
+        </div>
+        <p>
+            Für alle Änderungen in der Ernährung Ihres Babys, den Übergang zu Beikost oder die Allergeneinführung
+            <strong>müssen Sie Ihren Kinderarzt konsultieren</strong>.
+            Es ist Ihre alleinige Verantwortung, zu überprüfen, ob die von der KI generierten Rezeptvorschläge für Ihr Baby geeignet sind.
+        </p>
+
+        <!-- 2. Erfasste Daten -->
+        <h2><span class="num">2</span> Datenerfassung & Datenschutz</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Datentyp</th>
+                    <th>Zweck</th>
+                    <th>Verarbeitet von</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Baby-Profil (Name, Alter, Allergie)</strong> <span class="badge local">Auf dem Gerät</span></td>
+                    <td>Personalisierung von Rezeptvorschlägen</td>
+                    <td>Nur auf Ihrem Gerät (UserDefaults)</td>
+                </tr>
+                <tr>
+                    <td><strong>Kühlschrank-Zutaten & Favoriten</strong> <span class="badge local">Auf dem Gerät</span></td>
+                    <td>Speichern und Vorschlag von Mahlzeiten</td>
+                    <td>Nur auf Ihrem Gerät (SwiftData)</td>
+                </tr>
+                <tr>
+                    <td><strong>KI-Rezeptanfragen</strong> <span class="badge optional">Optional KI</span></td>
+                    <td>Intelligente Zutatenaustausch-Vorschläge</td>
+                    <td>Google Gemini API <em>(Anonym)</em></td>
+                </tr>
+                <tr>
+                    <td><strong>Ernährungs- / Regenbogen-Statistiken</strong> <span class="badge local">Auf dem Gerät</span></td>
+                    <td>Verfolgung der Ernährungsvielfalt</td>
+                    <td>Nur auf Ihrem Gerät</td>
+                </tr>
+                <tr>
+                    <td><strong>Wachstum, Impfungen, Zähne, Meilensteine</strong> <span class="badge local">Auf dem Gerät</span></td>
+                    <td>Aufzeichnung von Babys Entwicklungsmeilensteinen</td>
+                    <td>Nur auf Ihrem Gerät</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight green">
+            ✅ <strong>Keine Identitätsverknüpfung.</strong> Keine Daten werden mit Ihrem echten Namen, ID-Nummer, E-Mail, Telefon
+            oder vertraulichen Informationen verknüpft. Unsere App erfordert keine Kontoerstellung oder Anmeldung.
+        </div>
+
+        <!-- 3. KI-Dienst Dritter -->
+        <h2><span class="num">3</span> KI-Dienst von Drittanbietern — Google Gemini API</h2>
+
+        <p>
+            Bebeğim: İlk Lokma nutzt die <strong>Gemini API</strong> von <strong>Google LLC</strong>,
+            um intelligente Rezeptvorschläge und robuste wöchentliche Essensplanung zu ermöglichen.
+        </p>
+
+        <h3>Welche Daten werden an Google gesendet?</h3>
+        <ul>
+            <li>Anonyme Anfragen wie "Generiere ein Breirezept für einen 8 Monate alten Säugling mit diesen Zutaten."</li>
+            <li>Wöchentliche Lebensmittelverbrauchslisten (nur zur Planerstellung).</li>
+        </ul>
+
+        <h3>Welche Daten werden NICHT an Google gesendet?</h3>
+        <ul>
+            <li>Ihr Name, Ihre E-Mail-Adresse oder andere persönliche Identifikationsinformationen.</li>
+            <li>GPS-Standort oder Zahlungsinformationen.</li>
+        </ul>
+
+        <!-- 4. Datenspeicherung -->
+        <h2><span class="num">4</span> Datenspeicherung & Sicherheit</h2>
+
+        <ul>
+            <li>Das Alter Ihres Babys, Allergien und Zutaten werden <strong>ausschließlich auf Ihrem Gerät</strong> gespeichert.</li>
+            <li>Wir verwenden oder betreiben <strong>keine</strong> Backend-Server-Datenbanken. Ihr Gerät ist der einzige Speicherort.</li>
+            <li>Sie können alle Daten jederzeit permanent löschen, indem Sie die App löschen.</li>
+            <li><em>Hinweis: Dieser Abschnitt gilt für Baby-Profil, Kühlschrank und Favoriten. Premium-Abopurchase-Daten werden über Apple App Store und RevenueCat verarbeitet — siehe Abschnitt 5.</em></li>
+        </ul>
+
+        <!-- 5. Premium-Abo -->
+        <h2><span class="num">5</span> Premium-Mitgliedschaft / Abonnement</h2>
+
+        <p>
+            Bebeğim: İlk Lokma bietet ein optionales <strong>Premium-Abonnement</strong>. Die Kernfunktionen bleiben
+            ohne Abo nutzbar; Premium schaltet zusätzliche Funktionen frei wie unbegrenzte Favoriten/Lagerbestände,
+            wöchentliche KI-Mahlzeitpläne, benutzerdefinierte intelligente Benachrichtigungen und Entfernung des Limits
+            für tägliche Chatbot-Nachrichten.
+        </p>
+
+        <ul>
+            <li><strong>Plan-Optionen:</strong> Verfügbar als monatliche, 6-monatige und jährliche Abrechnungsperioden. Die aktuellen Preise
+                für Ihre Region werden auf dem Kaufbildschirm angezeigt.</li>
+            <li><strong>Kostenlose Testversion:</strong> Einige Pakete können eine kostenlose Testversion enthalten; falls nicht
+                vor Ablauf gekündigt, konvertiert das Abo automatisch zu einem bezahlten Plan.</li>
+            <li><strong>Automatische Verlängerung:</strong> Das Abo wird automatisch verlängert, sofern es nicht mindestens 24 Stunden
+                vor Ablauf gekündigt wird; die Gebühr wird Ihrer Apple ID belastet.</li>
+            <li><strong>Kündigung & Verwaltung:</strong> Sie können jederzeit kündigen über <em>Einstellungen → [Apple ID] → Abos</em>
+                auf Ihrem Gerät oder im In-App-Bildschirm "Abo verwalten". Eine Kündigung beendet den Zugriff nicht für die
+                bereits bezahlte Periode; es stoppt nur die nächste Verlängerung.</li>
+            <li><strong>Zahlung & Rückerstattung:</strong> Alle Zahlungen werden über den Apple App Store verarbeitet; Rückerstattungsanfragen
+                unterliegen Apples Standardrichtlinien und können von uns nicht direkt erstattet werden.</li>
+        </ul>
+
+        <div class="highlight">
+            ℹ️ Abo-Transaktionen werden über den Apple App Store und unseren Abonnement-Dienstleister <strong>RevenueCat</strong> verarbeitet.
+            Technische Informationen wie Kauf-/Transaktions-IDs werden mit diesen Diensten geteilt — Ihre Zahlungsdaten erreichen uns nie und werden direkt von Apple behandelt.
+        </div>
+
+        <!-- 6. Kontakt -->
+        <h2><span class="num">6</span> Kontakt</h2>
+        <div class="contact-box">
+            <strong>Bebeğim: İlk Lokma (BiteMix) — Unterstützung & Datenschutz</strong><br>
+            Entwickler: Barış Görün<br>
+            E-Mail: <a href="mailto:barisgorgunn@gmail.com">barisgorgunn@gmail.com</a><br>
+            Bitte kontaktieren Sie uns per E-Mail für technische Unterstützung oder Datenschutz-Anfragen.
         </div>
     </div>
 
 </div>
 </body>
 </html>
-
